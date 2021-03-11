@@ -3,8 +3,8 @@
 <style>
 
 html,body {
-	margin: 0px;
 	height: 100%;
+	width: 100%;
 }
 
 
@@ -17,7 +17,6 @@ html,body {
 }
 
 #top{
-	
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -62,7 +61,7 @@ html,body {
 	color: white;
 }
 
-#help a:hover {
+#help:hover a{
 	color: white;
 }
 
@@ -87,11 +86,13 @@ html,body {
 	border-radius: 15px;
 	font-size: large;
 }
-
+/*
 #center_button:hover{
 	background-color: white;
 	color: red;
 }
+
+*/
 
 #center_button_alt{
 	color: red;
@@ -136,6 +137,23 @@ html,body {
 
 }
 
+#run_details{
+	background-color: red;
+	width: 100%;
+}
+
+#run_details_colums{
+	display: flex;
+	justify-content:space-evenly;
+	padding-top: 32px;
+	
+}
+
+.total_details{
+	text-align: center;
+	color: white;
+}
+
 </style>
 
 <html lang="de-de">
@@ -163,9 +181,11 @@ html,body {
 				</div>
 			</div>
 			<div id="main">
-				<div id="center_button">
-					Lauf eintragen und Urkunde sichern
-				</div>
+				<a href="#">
+					<div id="center_button">
+						Lauf eintragen und Urkunde sichern
+					</div>
+				</a>
 				<div id="center_button_alt">
 					Oder spenden Sie so!
 				</div>
@@ -190,19 +210,28 @@ html,body {
 		</div>
 		<div id="run_details">
 			<div id="run_details_colums">
-				<div id="total_distance">
+				<div class="total_details">
+					<div>
+						Absolvierte Kilometer
+					</div>
 					<img src="kinderlauf.html" alt="Total Distance">
 					<div id="distance_data">
 						10000km
 					</div>
 				</div>
-				<div id="total_participants">
+				<div class="total_details">
+					<div>
+						Teilnehmer 
+					</div>
 					<img src="kinderlauf.html" alt="Total Participants">
 					<div id="participants_data">
 						10000
 					</div>
 				</div>
-				<div id="total_money">
+				<div class="total_details">
+					<div>
+						Gesammelte Spenden
+					</div>
 					<img src="kinderlauf.html" alt="Total Money">
 					<div id="participants_data">
 						10000&#x20AC
