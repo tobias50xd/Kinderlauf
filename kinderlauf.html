@@ -2,8 +2,18 @@
 
 <style>
 
-body{
+html,body {
 	margin: 0px;
+	height: 100%;
+}
+
+
+#initial_page{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
 }
 
 #top{
@@ -57,12 +67,74 @@ body{
 }
 
 #main {
-
-	margin: 16px;
-	background-color: teal;
+	text-align: center;
+	position: relative;
+	
 }
 
+#center_button{
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	padding-left: 32px;
+	padding-right: 32px;
+	background-color: red;
+	display: inline-block;
+	border: 1px solid;
+	border-color: black;
+	border-radius: 15px;
+	font-size: large;
+}
 
+#center_button:hover{
+	background-color: white;
+	color: red;
+}
+
+#center_button_alt{
+	color: red;
+	font-size: medium;
+	margin-top: 16px;
+	font-weight: bold;
+}
+
+#charity_details{
+	padding: 8px;
+	color: red;
+	font-size: small;
+}
+
+#charity_details:hover #charity_details_hint{
+	visibility: visible;
+}
+
+#charity_details_hint{
+	visibility: hidden;
+	display: inline-block;
+	z-index: 2; 
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%,100%);
+	text-align: center;
+	background-color: rgb(26, 26, 26);
+	opacity: 80%;
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	color: white;
+	border-radius: 15px;
+
+}
+
+#skyline{
+	text-align: center;
+	width: 100%;
+
+}
 
 </style>
 
@@ -75,24 +147,198 @@ body{
 	</head>
 	
 	<body>
-		<div id="top">
-			<div id="hidden">Wie<br>funktioniert<br>Kinder<br>laufen für<br>Kinder?</div>
-			<div id="logo">
-				<h1><img src="./klfk.jpg" alt="Kinder laufen für Kinder"></h1>
+		<div id="initial_page">
+			<div id="top">
+				<div id="hidden">Wie<br>funktioniert<br>Kinder<br>laufen für<br>Kinder?</div>
+				<div id="logo">
+					<h1><img src="./src/klfk.jpg" alt="Kinder laufen für Kinder"></h1>
+					
+				</div>
+				<div id="help">
+					<a href="https://www.postsportverein-landshut.de/">
+						<div id="help_text">
+						Wie<br>funktioniert<br>Kinder<br>laufen für<br>Kinder?
+						</div>
+					</a>
+				</div>
+			</div>
+			<div id="main">
+				<div id="center_button">
+					Lauf eintragen und Urkunde sichern
+				</div>
+				<div id="center_button_alt">
+					Oder spenden Sie so!
+				</div>
+				<div id="charity_details">
+					Schulstiftung Seligenthal; Sonderkonto „Kinder laufen für Kinder“<br>
+					Sparkasse Landshut;	BIC: BYLADEM1LAH<br>
+					IBAN: DE09743500000004664205<br>
+					Verwendungszweck: Spende von ... für virtuellen Spendenlauf
+
+					<div id="charity_details_hint">
+						Für einen Betrag von weniger als 200€ gilt der Überweisungsträger als Spendennachweis.<br> 
+						Wird bei einem größeren Spendenbetrag eine Spendenquittung benötigt, 
+						dann wenden Sie sich bitte an 
+						<a href="mailto:badminton@postsportverein-landshut.de" style="color: red;">badminton@postsportverein-landshut.de</a>
+					</div>
+				</div>
 				
 			</div>
-			<div id="help">
-				<a href="https://www.postsportverein-landshut.de/">
-					<div id="help_text">
-					Wie<br>funktioniert<br>Kinder<br>laufen für<br>Kinder?
+			<div id="skyline">
+				<img src="./src/la_skyline.jpg" alt="Skyline Landshut ">
+			</div>
+		</div>
+		<div id="run_details">
+			<div id="run_details_colums">
+				<div id="total_distance">
+					<img src="kinderlauf.html" alt="Total Distance">
+					<div id="distance_data">
+						10000km
+					</div>
+				</div>
+				<div id="total_participants">
+					<img src="kinderlauf.html" alt="Total Participants">
+					<div id="participants_data">
+						10000
+					</div>
+				</div>
+				<div id="total_money">
+					<img src="kinderlauf.html" alt="Total Money">
+					<div id="participants_data">
+						10000&#x20AC
+					</div>
+				</div>
+			</div>
+			<a href="#">
+				<div id="button_filter">
+					Weitere Filteroptionen / Auswertungen
+				</div>
+			</a>
+		</div>
+
+		<section class="charity_destination">
+			<h2>Wo kommen die Spenden an?</h2>
+			<p>
+				<b>Kinderpalliativ Hilfe Niederbayern</b>	<a href="https://www.kinderpalliativ-niederbayern.de/">https://www.kinderpalliativ-niederbayern.de/</a><br>
+				Der Verein unterstütze mittlerweile nicht nur unheilbar sterbende, sondern auch schwerstkranke Kinder. Diese sollen
+				zu Hause in gewohnter Umgebung sterben dürfen. Im besten Falle werden die Kinder im Kreis der Familie gepflegt.
+				Der Verein fördert Maßnahmen und Einrichtungen, die die Situation betroffener Familien verbessern.
+			</p>
+			<p>
+				<b>Kinderheim St. Vinzenz </b><a href="https://caritaslandshut.de/kinderheim">https://caritaslandshut.de/kinderheim</a><br>
+				Ausgleich von sozialer Benachteiligung - Aufrechterhaltung von sozialen Bindungen - Weiterführende
+				heilpädagogische Maßnahmen.
+			</p>
+			<p>
+				<b>Kinderkrankenhaus St. Marien in Landshut </b><a href="https://www.kinderkrankenhaus-landshut.de/">https://www.kinderkrankenhaus-landshut.de/</a><br>
+				das Kinderkrankenhaus in seiner vielfältigen und überregionalen Aufgaben zu unterstützen umso den vom
+				Kinderkrankenhaus betreuten Kindern, die bestmögliche Behandlung und Betreuung zukommen zu lassen.
+			</p>
+			<p>
+				<b>Klinikclowns </b><a href="https://www.klinikclowns.de/">https://www.klinikclowns.de/</a><br>
+				Nach dem Motto „Lachen ist die beste Medizin“ erleichtern die regelmäßigen Besuche der Klinikclowns kranken
+				Kindern die oft schwere, von Sorgen geprägte Zeit eines Klinikaufenthalts und fördern den Heilungsprozess.
+			</p>
+			<p>
+				<b>„Landshuter für Landshut“ OB Direkthilfe Landshut</b><br>
+				Die OB-Direkthilfe-Aktion „Landshuter für Landshuter“ hat sich zum Ziel gesetzt Familien oder Einzelpersonen aus
+				der Stadt Landshut, die mit einem Schicksalsschlag zu kämpfen haben und dringender Hilfe bedürfen, zu
+				unterstützen.
+			</p>
+			<p>
+				<b>Stille Hilfe – Landkreis Landshut - </b><a href="http://www.stille-hilfe.de/">http://www.stille-hilfe.de/</a><br>
+				Im Moment scheint das Leben perfekt und plötzlich ist alles anders. Schicksale, wie eine heimtückische Krankheit,
+				ein Unfall, die Gewalt der Natur usw. entscheiden oft über Glück oder Unglück. Hier nimmt sich der Verein "Stille
+				Hilfe e.V." unverschuldet in Not geratener Menschen aus der Region an.
+			</p>
+		</section>
+		<section class="charity_sponsors">
+			<h2>Unsere Sponsoren</h2>
+			<div class="sponsor_rows">
+				<a href="https://www.schott.com/german/index.html">
+					<div>
+						<img src="#" alt="Sponsor Schott">
+					</div>
+				</a>
+				<a href="https://www.flottweg.com/de/">
+					<div>
+						<img src="#" alt="Sponsor Flottweg">
 					</div>
 				</a>
 			</div>
-		</div>
-		<div id="main">
-			hhhhh
-
-		</div>
+			<div></div>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+				<a href="#">
+					<div>
+						<img src="#" alt="Sponsor ">
+					</div>
+				</a>
+			</div>
+		</section>
 		
 	</body>
 
