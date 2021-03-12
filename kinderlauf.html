@@ -2,217 +2,246 @@
 
 <style>
 
-html,body {
-	margin: 0px;
-	height: 100%;
-	width: 100%;
-}
-
-
-#initial_page{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
-}
-
-#top{
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-}
-
-#hidden{
-	margin: 8px;
-	margin-left: 16px;
-	visibility:hidden;
-}
-
-#logo {
-	margin-top: 16px;
-	display: inline-block;
-	width: 80%;
-	height: auto;	
-}
-
-#help {
-	margin-top: 8px;
-	margin-right: 8px;
-	margin-bottom: 8px;
-	border-radius: 15px;
-	border-style: solid;
-	border-width: thin;
-	border-color: red;
-	font-weight: bold;
-	display: inline-block;
-	align-self: flex-start;
-}
-
-#help_text {
-	text-align: center;
-	font-size: 16px;
-	margin: 8px;
-}
-
-#help a:link, a:visited {
-	text-decoration: none;
-	color: red;
-}
-
-#help:hover {
-	background-color: red;
-	color: white;
-}
-
-#help:hover a{
-	color: white;
-}
-
-#main {
-	text-align: center;
-	position: relative;
+	html,body {
+		margin: 0px;
+		height: 100%;
+		width: 100%;
+	}
 	
-}
+	#initial_page{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+	}
+	
+	#top{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	#hidden{
+		margin: 8px;
+		margin-left: 16px;
+		visibility:hidden;
+	}
+	
+	#logo {
+		margin-top: 16px;
+		display: inline-block;
+		width: 80%;
+		height: auto;	
+	}
+	
+	#help {
+		margin-top: 8px;
+		margin-right: 8px;
+		margin-bottom: 8px;
+		border-radius: 15px;
+		border-style: solid;
+		border-width: thin;
+		border-color: red;
+		font-weight: bold;
+		display: inline-block;
+		align-self: flex-start;
+	}
+	
+	#help_text {
+		text-align: center;
+		font-size: 16px;
+		margin: 8px;
+	}
+	
+	#help a:link, a:visited {
+		text-decoration: none;
+		color: red;
+	}
+	
+	#help:hover {
+		background-color: red;
+		color: white;
+	}
+	
+	#help:hover a{
+		color: white;
+	}
+	
+	#main {
+		text-align: center;
+		position: relative;
+		
+	}
+	
+	#center_button{
+		text-align: center;
+		color: white;
+		font-weight: bold;
+		padding-top: 16px;
+		padding-bottom: 16px;
+		padding-left: 32px;
+		padding-right: 32px;
+		background-color: red;
+		display: inline-block;
+		border: 1px solid;
+		border-color: black;
+		border-radius: 15px;
+		font-size: large;
+	}
+	/*
+	#center_button:hover{
+		background-color: white;
+		color: red;
+	}
+	
+	*/
+	
+	#center_button_alt{
+		color: red;
+		font-size: medium;
+		margin-top: 16px;
+		font-weight: bold;
+	}
+	
+	#charity_details{
+		padding: 8px;
+		color: red;
+		font-size: small;
+	}
+	
+	#charity_details:hover #charity_details_hint{
+		visibility: visible;
+	}
+	
+	#charity_details_hint{
+		visibility: hidden;
+		display: inline-block;
+		z-index: 2; 
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%,100%);
+		text-align: center;
+		background-color: rgb(26, 26, 26);
+		opacity: 80%;
+		padding-left: 16px;
+		padding-right: 16px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		color: white;
+		border-radius: 15px;
+	
+	}
+	
+	#skyline{
+		text-align: center;
+		width: 100%;
+	
+	}
+	
+	#run_details{
+		background-color: red;
+		width: 100%;
+		text-align: center;
+		padding-bottom: 32px;
+		margin-bottom: 0px;
+	}
+	
+	#run_details_colums{
+		display: flex;
+		justify-content:space-evenly;
+		padding-top: 32px;
+	}
+	#run_details a:link, a:visited {
+		text-decoration: none;
+		color: red;
+	}
+	
+	.total_details{
+		text-align: center;
+		color: white;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	
+	.details_data{
+		padding-top: 8px;
+		font-size: 16px;
+	}
+	
+	.total_details img{
+		padding-top: 8px;
+		max-width: 100%;
+		height: auto;
+	}
+	
+	#button_filter{
+		text-align: center;
+		margin-top: 16px;
+		margin-left: 64px;
+		margin-right: 64px;
+		font-size: 18px;
+		color: red;
+		font-weight: bold;
+		background-color: white;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		padding-left: 16px;
+		padding-right: 16px;
+		border-radius: 10px;
+		border: 1px solid;
+		border-color: white;
+	}
+	
+	#button_filter:hover{
+		background-color: red;
+		border-color: white;
+		border: 1px solid;
+		color: white;
+	}
+	
+	.destination_sponsors h2{
+		color: red;
+		font-size: 22px;
+		margin: 0px;
+		padding: 16px;
+		padding-top: 24px;
+		padding-bottom: 8px;
+	}
+	
+	.destination_sponsors p{
+		border: 1px solid;
+		border-radius: 15px;
+		border-color: red ;
+		padding: 16px;
+		padding-left: 32px;
+		margin-left: 40px;
+		margin-right: 8px;
+	}
+	
+	.destination_sponsors a{
+		color: red;
+		text-decoration: none;
+	}
 
-#center_button{
-	text-align: center;
-	color: white;
-	font-weight: bold;
-	padding-top: 16px;
-	padding-bottom: 16px;
-	padding-left: 32px;
-	padding-right: 32px;
-	background-color: red;
-	display: inline-block;
-	border: 1px solid;
-	border-color: black;
-	border-radius: 15px;
-	font-size: large;
-}
-/*
-#center_button:hover{
-	background-color: white;
-	color: red;
-}
+	#sponsor_grid{
+		padding-bottom: 16px;
+		margin-left: 40px;
+		margin-right: 8px;
+		display: flex;
+		flex-wrap: wrap;
+	}
 
-*/
+	.sponsors{
+		flex-grow: 1;
+	}
 
-#center_button_alt{
-	color: red;
-	font-size: medium;
-	margin-top: 16px;
-	font-weight: bold;
-}
-
-#charity_details{
-	padding: 8px;
-	color: red;
-	font-size: small;
-}
-
-#charity_details:hover #charity_details_hint{
-	visibility: visible;
-}
-
-#charity_details_hint{
-	visibility: hidden;
-	display: inline-block;
-	z-index: 2; 
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translate(-50%,100%);
-	text-align: center;
-	background-color: rgb(26, 26, 26);
-	opacity: 80%;
-	padding-left: 16px;
-	padding-right: 16px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	color: white;
-	border-radius: 15px;
-
-}
-
-#skyline{
-	text-align: center;
-	width: 100%;
-
-}
-
-#run_details{
-	background-color: red;
-	width: 100%;
-	text-align: center;
-	padding-bottom: 32px;
-	margin-bottom: 0px;
-}
-
-#run_details_colums{
-	display: flex;
-	justify-content:space-evenly;
-	padding-top: 32px;
-}
-#run_details a:link, a:visited {
-	text-decoration: none;
-	color: red;
-}
-
-.total_details{
-	text-align: center;
-	color: white;
-	font-size: 18px;
-	font-weight: bold;
-}
-
-.details_data{
-	padding-top: 8px;
-	font-size: 16px;
-}
-
-.total_details img{
-	padding-top: 8px;
-	max-width: 100%;
-	height: auto;
-}
-
-#button_filter{
-	text-align: center;
-	margin-top: 16px;
-	margin-left: 64px;
-	margin-right: 64px;
-	font-size: 18px;
-	color: red;
-	font-weight: bold;
-	background-color: white;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	border-radius: 10px;
-	border: 1px solid;
-	border-color: white;
-}
-
-#button_filter:hover{
-	background-color: red;
-	border-color: white;
-	border: 1px solid;
-	color: white;
-}
-
-#charity_destination{
-	margin: 0px;
-	background-color: tomato;
-
-}
-
-#charity_destination h2{
-	color: red;
-
-}
-
+	.sponsors img{
+		min-width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
 
 </style>
 
@@ -301,7 +330,97 @@ html,body {
 				</div>
 			</a>
 		</div>
-		
+		<section class="destination_sponsors">
+			<h2>Wo kommen die Spenden an?</h2>
+			<p>
+				<b>Kinderpalliativ Hilfe Niederbayern</b> <a href="https://www.kinderpalliativ-niederbayern.de/">https://www.kinderpalliativ-niederbayern.de/</a><br>
+				Der Verein unterstütze mittlerweile nicht nur unheilbar sterbende, sondern auch schwerstkranke Kinder. Diese sollen
+				zu Hause in gewohnter Umgebung sterben dürfen. Im besten Falle werden die Kinder im Kreis der Familie gepflegt.
+				Der Verein fördert Maßnahmen und Einrichtungen, die die Situation betroffener Familien verbessern.
+			</p>
+			<p>
+				<b>Kinderheim St. Vinzenz </b><a href="https://caritaslandshut.de/kinderheim">https://caritaslandshut.de/kinderheim</a><br>
+				Ausgleich von sozialer Benachteiligung - Aufrechterhaltung von sozialen Bindungen - Weiterführende
+				heilpädagogische Maßnahmen.
+			</p>
+			<p>
+				<b>Kinderkrankenhaus St. Marien in Landshut </b><a href="https://www.kinderkrankenhaus-landshut.de/">https://www.kinderkrankenhaus-landshut.de/</a><br>
+				das Kinderkrankenhaus in seiner vielfältigen und überregionalen Aufgaben zu unterstützen umso den vom
+				Kinderkrankenhaus betreuten Kindern, die bestmögliche Behandlung und Betreuung zukommen zu lassen.
+			</p>
+			<p>
+				<b>Klinikclowns </b><a href="https://www.klinikclowns.de/">https://www.klinikclowns.de/</a><br>
+				Nach dem Motto „Lachen ist die beste Medizin“ erleichtern die regelmäßigen Besuche der Klinikclowns kranken
+				Kindern die oft schwere, von Sorgen geprägte Zeit eines Klinikaufenthalts und fördern den Heilungsprozess.
+			</p>
+			<p>
+				<b>„Landshuter für Landshut“ OB Direkthilfe Landshut</b><br>
+				Die OB-Direkthilfe-Aktion „Landshuter für Landshuter“ hat sich zum Ziel gesetzt Familien oder Einzelpersonen aus
+				der Stadt Landshut, die mit einem Schicksalsschlag zu kämpfen haben und dringender Hilfe bedürfen, zu
+				unterstützen.
+			</p>
+			<p>
+				<b>Stille Hilfe – Landkreis Landshut - </b><a href="http://www.stille-hilfe.de/">http://www.stille-hilfe.de/</a><br>
+				Im Moment scheint das Leben perfekt und plötzlich ist alles anders. Schicksale, wie eine heimtückische Krankheit,
+				ein Unfall, die Gewalt der Natur usw. entscheiden oft über Glück oder Unglück. Hier nimmt sich der Verein "Stille
+				Hilfe e.V." unverschuldet in Not geratener Menschen aus der Region an.
+			</p>
+		</section>
+		<section class="destination_sponsors">
+			<h2>Unsere Sponsoren</h2>
+			<ul id="sponsor_grid">
+				<li class="sponsors">
+					<a href="https://www.schott.com/german/index.html"><img src="src/sponsors_part/schott.png" alt="Schott"></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.flottweg.com/de/"><img src="src/sponsors_part/flottweg.png" alt="Flottweg"></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.alpenstrand.de/"><img src="src/sponsors_part/alpenstrand.png" alt="Alpenstrand"></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.baeckerei-wackerl.de/"><img src="src/sponsors_part/wackerl.png" alt="Wackerl"></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.brauerei-wittmann.de/"><img src="src/sponsors_part/wittmann.png" alt="Wittmann"></a>
+				</li>
+				<!---
+				<li class="sponsors">
+					<a href="https://www.flottweg.com/de/"><img src="" alt=""></a>
+				</li>
+				<li class="sponsors">
+					<a href="#"><img src="" alt="Metzgerei Brunner"></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.flottweg.com/de/"><img src="" alt=""></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.schott.com/german/index.html"><img src="" alt="Schott"></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.flottweg.com/de/"><img src="" alt=""></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.schott.com/german/index.html"><img src="" alt="Schott"></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.flottweg.com/de/"><img src="" alt=""></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.schott.com/german/index.html"><img src="" alt="Schott"></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.flottweg.com/de/"><img src="" alt=""></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.schott.com/german/index.html"><img src="" alt="Schott"></a>
+				</li>
+				<li class="sponsors">
+					<a href="https://www.flottweg.com/de/"><img src="" alt="Schott"></a>
+				</li>
+				-->
+			</ul>
+		</section>
 		
 	</body>
 
