@@ -15,6 +15,8 @@
 		justify-content: space-between;
 		flex-direction: column;
 	}
+
+	
 	
 	#top{
 		width: 100%;
@@ -135,10 +137,29 @@
 	}
 	
 	#skyline{
-		text-align: center;
+		display: flex;
+		justify-content: center;
 		width: 100%;
-	
 	}
+
+	#skyline_bottom{
+		margin: 0;
+		height: 8px;
+		background-color: red;
+		border: 0px;
+	}
+
+	#skyline ul{
+		display: flex;
+		justify-content: flex-start;
+		margin: 0;
+		padding: 0;
+	}
+
+	#skyline_right_align{
+		justify-content: flex-end;
+	}
+
 	
 	#run_details{
 		background-color: red;
@@ -294,8 +315,41 @@
 				</div>
 				
 			</div>
-			<div id="skyline">
-				<img src="./src/la_skyline.jpg" alt="Skyline Landshut ">
+			<div>
+				<div id="skyline">
+					<ul id="skyline_right_align">
+						<li>
+							<img src="src/skyline/la_city.png">
+						</li>
+						<li>
+							<img src="src/skyline/la_jodok.png">
+						</li>
+						<li>
+							<img src="src/skyline/la_city.png">
+						</li>
+						<li>
+							<img src="src/skyline/la_city.png">
+						</li>
+					</ul>
+					<div id="skyline_middle">
+						<img src="src/skyline/la_smart.png">
+					</div>
+					<ul>
+						<li>
+							<img src="src/skyline/la_city.png">
+						</li>
+						<li>
+							<img src="src/skyline/la_city.png">
+						</li>
+						<li>
+							<img src="src/skyline/la_city.png">
+						</li>
+						<li>
+							<img src="src/skyline/la_city.png">
+						</li>
+					</ul>
+				</div>
+				<hr id="skyline_bottom">
 			</div>
 		</div>
 		<div id="run_details">
@@ -429,9 +483,3 @@
 	</body>
 
 </html>
-
-
-
-
-
-
