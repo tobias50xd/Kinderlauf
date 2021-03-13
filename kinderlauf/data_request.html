@@ -1,5 +1,98 @@
 <!DOCTYPE html>
-<htm>
+<html>
+
+<style>
+    #top{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo_psv{
+        width: 15vw;
+    }
+
+	#logo_klfk {
+		margin-top: 16px;
+		display: inline-block;
+		max-width: 80%;
+		min-width: 0;
+		height: auto;	
+		object-fit: contain;
+	}
+
+    #main{
+        margin: 8px;
+        margin-top: 16px;
+        padding: 24px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        border: 1px solid;
+        border-color: #ff1900;
+        border-radius: 35px;
+    }
+
+    #main h2{
+        margin: 0;
+        padding: 0;
+        color: #ff1900;
+        margin-bottom: 12px;
+    }
+
+    #main select{
+        display: inline-block;
+        margin-left: 24px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        border: 1px solid;
+        border-color: #ff1900;
+        
+    }
+
+    #submit_div{
+        text-align: right;
+        margin-top: 16px;
+        margin-right: 24px;
+    }
+
+    #main input{
+        background-color: #ff1900;
+        border: 0px;
+        padding: 4px;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-radius: 8px;
+        color: white;
+        font-size: 14px;
+    }
+    
+    #results table{
+        margin-top: 32px;
+        margin-left: 24px;
+        margin-right: 24px;
+        padding: 0px;
+        border: 2px solid;
+        border-color: #ff1900;
+        border-collapse:collapse;
+    }
+
+    #results th{
+        border: 2px solid;
+        border-color: #ff1900;
+        margin: 0px;
+        padding: 8px;
+    }
+
+    #results td{
+        text-align: right;
+        border: 2px solid;
+        border-color: #ff1900;
+        margin: 0px;
+        padding: 4px;
+    }
+
+    
+
+</style>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,13 +101,15 @@
 
     <body>
         <div id="top">
-            <div id="logo_psv">
+            <div class="logo_psv">
                 <a href="https://www.postsportverein-landshut.de/spendenlauf">
                     <img src="https://www.postsportverein-landshut.de/images/site/PostSVLogo_gross.png" alt="Post SV Landshut">
                 </a>
             </div>
             <div id="logo_klfk">
-                <img src="#" alt="Kinder laufen für Kinder">
+                <img src="./src/klfk.jpg" alt="Kinder laufen für Kinder">
+            </div>
+            <div class="logo_psv" style="visibility: hidden;">
             </div>
         </div>
         <div id="main">
@@ -26,7 +121,9 @@
                 <select id="dd_teams" name="teams">
                     <option value="teams">Klasse/Abteilung</option>
                 </select><br>
-                <input type="submit" id="submit">
+                <div id="submit_div">
+                    <input type="submit" id="submit">
+                </div>
             </form>
 
             <div id="results">
@@ -37,9 +134,15 @@
                         <th>Teilnehmer</th>
                         <th>Kilometer</th>
                     </tr>
+                    <tr>
+                        <td>Test</td>
+                        <td>Test</td>
+                        <td>0</td>
+                        <td>0km</td>
+                    </tr>
                     
                 </table>
             </div>
         </div>
     </body>
-</htm>
+</html>
