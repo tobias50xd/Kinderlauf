@@ -17,10 +17,10 @@
 	#top{
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 	}
 	
 	#logo {
-		margin-top: 16px;
 		display: inline-block;
 		max-width: 80%;
 		min-width: 0;
@@ -66,6 +66,16 @@
 		text-align: center;
 		position: relative;
 		
+	}
+
+	#main_header{
+		text-align: center;
+		color: #00a6ee;
+		font-weight: bold;
+		font-size: 2.5vh;
+		padding: 8px;
+		padding-top: 16px;
+		padding-bottom: 16px;
 	}
 	
 	#center_button{
@@ -127,6 +137,53 @@
 		color: white;
 		border-radius: 15px;
 	
+	}
+
+	#charity_ad{
+		text-align: center;
+	}
+
+	#charity_ad_header{
+		text-align: center;
+		display: inline-block;
+		color: #ff1900;
+		font-weight: bold;
+		font-size: 1.5vh;
+		padding: 8px;
+		padding-top: 16px;
+	}
+
+	#charity_share_options{
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	#whatsapp_share {
+		background-color: #4ac959;
+		display: inline-block;
+		padding-left: 4px;
+		padding-right: 4px;
+		border-radius: 4px;
+		font-size: 12px;
+		height: 20px;
+		color: white;
+		text-decoration: none;
+ 	}
+
+	#whatsapp_share:visited{
+		color: white;
+	}
+
+	#whatsapp_share img{
+		height: 14px;
+		width: auto;
+		vertical-align: middle;
+	}
+
+	#whatsapp_share span{
+  		display: inline-block;
+ 		vertical-align: middle;
 	}
 	
 	#skyline{
@@ -314,10 +371,10 @@
 					</a>
 				</div>
 			</div>
+			<div id="main_header">
+				Die erlaufene Summe wird zu 100% gespendet!
+			</div>
 			<div id="main">
-				<div id="main_header">
-					Die erlaufene Summe wird zu 100% gespendet!
-				</div>
 				<a href="./kinderlauf/data_input.html">
 					<div id="center_button">
 						Lauf eintragen und Urkunde sichern
@@ -339,21 +396,28 @@
 						<a href="mailto:badminton@postsportverein-landshut.de" style="color: red;">badminton@postsportverein-landshut.de</a>
 					</div>
 				</div>
-				<div id="charity_ad">
-					Teile das Event mit allen Bekannten und mach fleißig Werbung für die Gute Sache!<br>
-					<a class="twitter-share-button"
-  						href="https://twitter.com/intent/tweet?text=Hello%20world"
-  						data-size="small">Tweet
-					</a>
-
-					<div class="fb-share-button" data-href="https://www.postsportverein-landshut.de/spendenlauf" data-layout="button" data-size="small">
-						<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.postsportverein-landshut.de%2Fspendenlauf&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Teilen</a>
+			</div>
+			<div id="charity_ad">
+				<span id="charity_ad_header">
+					Teile das Event mit allen Bekannten und mach fleißig Werbung für die Gute Sache!
+				</span>
+				<div id="charity_share_options">
+					<div style="margin: 4px;">
+						<a class="twitter-share-button" 
+						href="https://twitter.com/intent/tweet?text=Hello%20world" data-size="small">Tweet
+					  </a>
 					</div>
-
-					<a href="whatsapp://send?text=https://chillyfacts.com/run-command-prompt-cmd-commands-from-java/" data-action="share/whatsapp/share">
-						Share in Whatsapp
-					</a>
 					
+					  <div class="fb-share-button" style="margin:4px;" data-href="https://www.postsportverein-landshut.de/spendenlauf" data-layout="button" data-size="small">
+						  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.postsportverein-landshut.de%2Fspendenlauf&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Teilen</a>
+					  </div>
+			  
+					  <a id="whatsapp_share" style="margin:4px;" href="whatsapp://send?text=https://chillyfacts.com/create-whatsapp-share-button-on-websites" data-action="share/whatsapp/share">
+						  <div style="margin-top: 1px;margin-bottom: 1px;">
+							  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Share with Whatsapp">
+							  <span>Share in Whatsapp</span> 
+						  </div>
+					  </a>
 				</div>
 			</div>
 			<div>
