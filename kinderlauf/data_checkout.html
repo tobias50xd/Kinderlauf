@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+
+<style>
+    html, body{
+        width: 100%;
+        margin: 0px;
+        text-align: center;
+    }
+
+    #top{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo_psv{
+        max-width: 5%;
+        height: auto;
+        margin: 16px;
+    }
+
+    .logo_psv  img{
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+	#logo_klfk{
+		margin-top: 16px;
+		display: inline-block;
+		max-width: 70%;
+		min-width: 0;
+		height: auto;	
+		object-fit: contain;
+	}
+
+    #main{
+        margin: 2vw;
+        margin-bottom: 0px;
+        margin-top: 6vh;
+        /*padding: 4vw;*/
+        color: #ff1900;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 16px;
+    }
+    #main h2{
+        padding-bottom: 24px;
+    }
+
+    #main a{
+        font-size: 1.25em;
+        color: rgb(0, 174, 255);
+        text-decoration: none;
+    }
+
+    #main a:visited{
+        color: rgb(0, 174, 255);
+    }
+
+    #charity_details{
+        color: #ff1900;
+        border:1px solid #ff1900;
+        border-radius: 15px;
+        margin: 2vw;
+        font-weight: bold;
+        text-align: left;
+        display: inline-block;
+        padding-bottom: 24px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    #charity_details h3{
+        text-align: center;
+    }
+
+</style>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Kinderlauf - Datenerfassung</title>
+    </head>
+
+    <body>
+        <div id="top">
+            <div class="logo_psv">
+                <a href="https://www.postsportverein-landshut.de/spendenlauf">
+                    <img src="https://www.postsportverein-landshut.de/images/site/PostSVLogo_gross.png" alt="Post SV Landshut">
+                </a>
+            </div>
+            <img id="logo_klfk" src="../src/klfk.jpg" alt="Kinder laufen für Kinder">
+            <div class="logo_psv" style="visibility: hidden;">
+                <a href="https://www.postsportverein-landshut.de/spendenlauf">
+                    <img src="https://www.postsportverein-landshut.de/images/site/PostSVLogo_gross.png" alt="Post SV Landshut">
+                </a>
+            </div>
+        </div>
+        <div id="main">
+            <h1>Danke für deine Unterstützung</h1>
+            <h2>Teile deine Erfolg mit einer, exklusiven für das Event, designten  Story!</h2>
+            <a href="../src/klfk.jpg" download="logo">Story ansehen</a><br>
+        </div>
+        <div id="charity_details">
+            <h3>Spendenadresse:</h3>
+                Schulstiftung Seligenthal; Sonderkonto „Kinder laufen für Kinder“<br>
+				Sparkasse Landshut;	BIC: BYLADEM1LAH<br>
+				IBAN: DE09743500000004664205<br>
+				Verwendungszweck: Spende von ... für virtuellen Spendenlauf<br>
+        </div>
+    </body>
+</html>
