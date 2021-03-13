@@ -19,13 +19,6 @@
 		justify-content: space-between;
 	}
 	
-	#hidden{
-		margin: 1vw;
-		margin-left: 16px;
-		visibility:hidden;
-		font-size: 2vw;
-	}
-	
 	#logo {
 		margin-top: 16px;
 		display: inline-block;
@@ -35,7 +28,7 @@
 		object-fit: contain;
 	}
 	
-	#help {
+	.help {
 		margin-top: 1vw;
 		margin-right: 1vw;
 		margin-bottom: 16px;
@@ -49,24 +42,24 @@
 		
 	}
 	
-	#help_text {
+	.help_text {
 		text-align: center;
 		font-size: 16px;
 		font-size: 2vw;
 		margin: 1vw;
 	}
 	
-	#help a:link, a:visited {
+	.help a:link, a:visited {
 		text-decoration: none;
 		color: #ff1900;
 	}
 	
-	#help:hover {
+	.help:hover {
 		background-color: #ff1900;
 		color: white;
 	}
 	
-	#help:hover a{
+	.help:hover a{
 		color: white;
 	}
 	
@@ -301,12 +294,16 @@
 	<body>
 		<div id="initial_page">
 			<div id="top">
-				<div id="hidden">Wie<br>funktioniert<br>Kinder<br>laufen für<br>Kinder?</div>
-				<img id="logo" src="./src/klfk.jpg" alt="Kinder laufen für Kinder">
-				<div id="help">
-					<a href="https://www.postsportverein-landshut.de/">
-						<div id="help_text">
+				<div class="help" style="visibility:hidden;">
+					<div class="help_text">
 						Wie<br>funktioniert<br>Kinder<br>laufen für<br>Kinder?
+					</div>
+				</div>
+				<img id="logo" src="./src/klfk.jpg" alt="Kinder laufen für Kinder">
+				<div class="help">
+					<a href="https://www.postsportverein-landshut.de/">
+						<div class="help_text">
+							Wie<br>funktioniert<br>Kinder<br>laufen für<br>Kinder?
 						</div>
 					</a>
 				</div>
