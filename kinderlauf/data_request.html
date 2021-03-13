@@ -4,52 +4,65 @@
 
 <style>
     
-    body{
+    html, body{
         width: 100%;
+        margin: 0px;
+        text-align: center;
     }
 
     #top{
-        width: 100%;
         display: flex;
         justify-content: space-between;
     }
 
-    .logo_psv  img{
-        max-width: 5vw;
+    .logo_psv{
+        max-width: 5%;
         height: auto;
         margin: 16px;
+    }
+
+    .logo_psv  img{
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
     }
 
 	#logo_klfk{
 		margin-top: 16px;
 		display: inline-block;
-		max-width: 80%;
+		max-width: 70%;
 		min-width: 0;
 		height: auto;	
 		object-fit: contain;
 	}
 
     #main{
-        margin: 8px;
-        margin-top: 16px;
-        padding: 24px;
-        padding-top: 16px;
-        padding-bottom: 16px;
+        margin: 2vw;
+        margin-top: 6vh;
+        padding: 4vw;
         border: 1px solid;
         border-color: #ff1900;
-        border-radius: 35px;
+        border-radius: 25px;
+        text-align: center;
+        display: inline-block;
     }
 
     #main h2{
-        margin: 0;
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-top: 0px;
         padding: 0;
         color: #ff1900;
-        margin-bottom: 12px;
+        margin-bottom: 24px;
+        font-size: 3vh
     }
 
     #main select{
+        font-size: 2vh;
         display: inline-block;
-        margin-left: 24px;
+        margin-left: 16px;
+        margin-right: 16px;
+        width: 25vh;
         margin-top: 4px;
         margin-bottom: 4px;
         border: 1px solid;
@@ -57,41 +70,42 @@
         
     }
 
-    #submit_div{
-        text-align: right;
-        margin-top: 16px;
-        margin-right: 24px;
-    }
-
     #main input{
         background-color: #ff1900;
         border: 0px;
+        width: 25vh;
+        margin-top: 12px;
         padding: 4px;
-        padding-left: 16px;
-        padding-right: 16px;
         border-radius: 8px;
         color: white;
-        font-size: 14px;
+        font-size: 2vh;
+    }
+
+    #results{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: auto;
     }
     
     #results table{
-        font-size: 2vw;
+        /*display: none;*/
+        font-size: 3vmin;
         margin-top: 32px;
-        margin-left: 24px;
-        margin-right: 24px;
-        margin-left: 3vmin;
-        margin-right: 3vmin;
+        margin-left: 0;
+        margin-right: 0;
         padding: 0px;
         border: 2px solid;
         border-color: #ff1900;
         border-collapse:collapse;
+        overflow-x: auto;
     }
 
     #results th{
         border: 2px solid;
         border-color: #ff1900;
         margin: 0px;
-        padding: 8px;
+        padding: 1vmin;
     }
 
     #results td{
@@ -99,7 +113,7 @@
         border: 2px solid;
         border-color: #ff1900;
         margin: 0px;
-        padding: 4px;
+        padding: 0.5vmin;
     }
 
     
@@ -120,7 +134,7 @@
                 </a>
             </div>
             <img id="logo_klfk" src="../src/klfk.jpg" alt="Kinder laufen für Kinder">
-            <div class="logo_psv" >
+            <div class="logo_psv" style="visibility: hidden;">
                 <a href="https://www.postsportverein-landshut.de/spendenlauf">
                     <img src="https://www.postsportverein-landshut.de/images/site/PostSVLogo_gross.png" alt="Post SV Landshut">
                 </a>
@@ -135,11 +149,8 @@
                 <select id="dd_teams" name="teams">
                     <option value="teams">Klasse/Abteilung</option>
                 </select><br>
-                <div id="submit_div">
-                    <input type="submit" id="submit">
-                </div>
+                <input type="submit" id="submit" value="Suchen">
             </form>
-
             <div id="results">
                 <table>
                     <tr>
