@@ -164,6 +164,21 @@
                 $organisationList = $conn->query($stmt);
             ?>
 
+            <script>
+                var dbArray = [
+                    <?php
+                        $stmt = "SELECT organisation, department FROM db_kinderlauf GROUP BY organisation DESC, department";
+                        $resultDb = $conn->query($stmt);
+                        while($dbRow = $resultDb->fetch_assoc()){
+                            $dbEntryOrganisation = $dbRow["organisation"];
+                            $dbEntryDepartment = $dbRow["department"];
+                            echo "['$dbEntryOrganisation','$dbEntryDepartment'],";
+                        }
+                    ?>
+                ];
+            
+            </script>
+
             <h2>Detailierte Datenabfrage</h2>
             <form action="../kinderlauf/data_request.php" method="GET">
                 <select id="dd_organisations" name="dd_organisations">
@@ -183,6 +198,19 @@
                 <select id="dd_teams" name="dd_teams">
                     <option value="main">Klasse/Abteilung</option>
                     <option value="all">Alle</option>
+                    <script>
+                        var i;
+                        for(i = 0; i < dbArray.length; i++){
+                            if(dbArray[i][0] == document.getElementById("dd_organisations").value){
+                                //create select options
+                                var opt = document.createElement('option');
+                                opt.value = dbArray[i][1];
+                                opt.innerHTML = dbArray[i][1];
+                                select.appendChild(opt);
+                            }
+                        }
+                    </script>
+
                 </select><br>
                 <input type="submit" id="submit" value="Suchen">
             </form>
