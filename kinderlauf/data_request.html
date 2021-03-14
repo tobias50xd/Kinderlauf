@@ -143,16 +143,19 @@
         </div>
         <div id="main">
             <h2>Detailierte Datenabfrage</h2>
-            <form>
+            <form action="../kinderlauf/data_request.html" method="GET">
                 <select id="dd_organisations" name="dd_organisations">
                     <option value="main">Schule/Organisation</option>
+                    <option value="all">Alle</option>
                 </select><br>
-                <select id="dd_teams" name="teams">
+                <select id="dd_teams" name="dd_teams">
                     <option value="teams">Klasse/Abteilung</option>
+                    <option value="all">Alle</option>
                 </select><br>
                 <input type="submit" id="submit" value="Suchen">
             </form>
-            <div id="results">
+            <div id="results" <?php if(!(!empty($_GET["dd_organisations"])&&(!empty(&_GET['dd_teams'])))
+                                ||(($_GET['dd_organisations']="main")&&(&_GET['dd_teams']="teams"))){echo "style="display: none;";} ?>>
                 <table>
                     <tr>
                         <th>Schule/Organisation</th>
