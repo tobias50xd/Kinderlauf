@@ -169,7 +169,7 @@
         <div id="main">
             <div id="left_side">
                 <h2>Lauf eintragen</h2>
-                <form action="#" method="POST">
+                <form action="../kinderlauf/data_checkout.html" method="POST">
                     <input type="text" placeholder="Name" id="lname" name="lname" class="inputs"><br>
                     <input type="text" placeholder="Vorname" id="fname" name="fname" class="inputs"><br>
                     <input type="text" placeholder="Schule/Organisation" id="orga" name="orga" class="inputs"><br>
@@ -181,7 +181,6 @@
                         <option class="discipline_options" value="">Rollerblades</option>
                         <option class="discipline_options" value="">Sonstiges</option>
                     </select><br>
-
                     <img id="chapta_start" class="inputs" src="captcha_code_file.php?rand=<?php echo rand(); ?>" id="captchaimg" ><br>
                     <label style ="border: none;" class="inputs" for="message">Geben sie den obigen Code bitte ein:</label><br>
                     <input type="text" onfocus="this.value=''" value="Code" placeholder="Code" id="chapta_code" name="chapta_code" class="inputs">
