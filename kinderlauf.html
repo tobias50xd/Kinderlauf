@@ -187,6 +187,7 @@
 	}
 	
 	#skyline{
+		position: relative;
 		display: flex;
 		justify-content: center;
 		width: 100%;
@@ -220,6 +221,46 @@
 
 	#skyline img{
 		vertical-align: bottom;
+	}
+
+	#skyline_popover{
+		display: inline-block;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding: 8px;
+		background-color: rgb(26, 26, 26);
+		opacity: 80%;
+		border: none;
+		border-top-left-radius: 15px;
+		border-bottom-left-radius:15px;
+		color: #ffd407;
+		font-size: medium;
+		width: 40vmin;
+	}
+
+	#skyline_popover h4{
+		margin: 0px;
+		color: #ffd407;
+		font-size: medium;
+	}
+
+	#skyline_popover img {
+		margin-top: 8px;
+		margin-bottom: 8px;
+		margin-left: 16px;
+		margin-right: 8px;
+		width: 25%;
+	}
+
+	@media (max-width: 991px) {
+		#skyline_popover{
+			font-size: small;
+		}
+
+		#skyline_popover h4{
+			font-size: small;
+		}	
 	}
 	
 	#run_details{
@@ -481,6 +522,11 @@
 						</li>
 						
 					</ul>
+					<div id="skyline_popover">
+						<h4>SCHIRMHERRSCHAFT</h4>
+						OB Alexander Putz & Landrat Peter Dreier<br>
+						<img src="./src/ich_bin_dabei.PNG" alt="Ich bin dabei. Du auch?">
+					</div>
 				</div>
 				<hr id="skyline_bottom">
 			</div>
