@@ -167,9 +167,9 @@
             <script type="text/javascript">
                 document.getElementById("test").innerHTML = "efrtr";
             </script>
-            <p id="test">
+            <div id="test">
                         
-            </p>
+            </div>
             <h2>Detailierte Datenabfrage</h2>
             <form action="../kinderlauf/data_request.php" method="GET">
                 <select id="dd_organisations" name="dd_organisations">
