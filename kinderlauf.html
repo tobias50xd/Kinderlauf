@@ -320,21 +320,32 @@
 		padding-left: 8px;
 		padding-right: 4px;
 	}
-
-	.total_details img{
-		margin-top: 8px;
-	}
 	
 	.details_data{
 		padding-top: 8px;
 		font-size: 28px;
 		font-size: 4vh;
 	}
+
+	.tacho_div{
+		position: relative;
+		margin-top: 8px;
+		padding-top: 8px;
+	}
 	
 	.total_details img{
-		padding-top: 8px;
 		max-width: 100%;
 		height: auto;
+	}
+
+	.tacho_neadle{
+		vertical-align: bottom;
+		max-height: 100%;
+		width: auto;
+		position: absolute;
+		left: 44%;
+		transform-origin: center 90%;
+		transform: translateY(-10%) rotate(-90deg);
 	}
 	
 	#button_filter{
@@ -582,7 +593,10 @@
 					<div>
 						Absolvierte Kilometer
 					</div>
-					<img src="src/tacho.png" alt="Total Distance">
+					<div class="tacho_div">
+						<img src="src/tacho.png" alt="Total Distance">
+						<img class="tacho_neadle" src="./src/tacho_nadel.png">
+					</div>
 					<div id="distance_data" class="details_data">
 						0km
 					</div>
@@ -591,7 +605,10 @@
 					<div>
 						Teilnehmer 
 					</div>
-					<img src="src/tacho.png" alt="Total Participants">
+					<div class="tacho_div">
+						<img src="src/tacho.png" alt="Total Participants">
+						<img class="tacho_neadle" src="./src/tacho_nadel.png">
+					</div>
 					<div id="participants_data" class="details_data">
 						0
 					</div>
@@ -600,13 +617,17 @@
 					<div>
 						Gesammelte Spenden
 					</div>
-					<img src="src/tacho.png" alt="Total Money">
+					<div class="tacho_div">
+						<img src="src/tacho.png" alt="Total Money">
+						<img class="tacho_neadle" src="./src/tacho_nadel.png">
+					</div>
 					<div id="participants_data" class="details_data">
 						<!---0&#x20AC-->
-						Ab 21.05.2021
+						Ab 21.05.
 					</div>
 				</div>
 			</div>
+			
 			<a href="javascript:void(0);">
 				<div id="button_filter">
 					Weitere Filteroptionen / Auswertungen
