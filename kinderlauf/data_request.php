@@ -164,12 +164,13 @@
                 $organisationList = $conn->query($stmt);
             ?>
 
+            
+            <div id="test">
+                    
+            </div>
             <script type="text/javascript">
                 document.getElementById("test").innerHTML = "efrtr";
             </script>
-            <div id="test">
-                        
-            </div>
             <h2>Detailierte Datenabfrage</h2>
             <form action="../kinderlauf/data_request.php" method="GET">
                 <select id="dd_organisations" name="dd_organisations">

@@ -8,6 +8,7 @@
 	
 	#initial_page{
 		width: 100%;
+		min-height: 100vh;
 		display: flex;
 		justify-content: space-between;
 		flex-direction: column;
@@ -71,13 +72,38 @@
 
 	#main_header{
 		text-align: center;
-		color: #ff1900;
+		color: #00a6ee;
 		font-weight: bold;
-		font-size: 2vh;
+		font-size: 2.5vh;
 		padding: 8px;
 		padding-top: 16px;
 		padding-bottom: 16px;
 	}
+
+	#center_button{
+		text-align: center;
+		color: white;
+		font-weight: bold;
+		padding-top: 16px;
+		padding-bottom: 16px;
+		padding-left: 7vw;
+		padding-right: 7vw;
+		background-color: #ff1900;
+		display: inline-block;
+		border: 1px solid;
+		border-color: black;
+		border-radius: 15px;
+		font-size: large;
+		font-size: 3vh;
+	}
+
+	/*
+	#center_button:hover{
+		background-color: white;
+		color: red;
+	}
+	
+	*/
 	
 	#center_view{
 		display: flex;
@@ -452,47 +478,31 @@
 					</a>
 				</div>
 			</div>
+			<div id="main_header">
+				Die erlaufene Summe wird zu 100% gespendet!
+			</div>
 			<div id="main">
-				<div id="center_view">
-					<div id="charity_details_div">
-						<div id="center_button_alt">
-							Oder spenden Sie so!
-						</div>
-						<div id="charity_details">
-							Schulstiftung Seligenthal; Sonderkonto „Kinder laufen für Kinder“<br>
-							Sparkasse Landshut;	BIC: BYLADEM1LAH<br>
-							IBAN: DE09743500000004664205<br>
-							Verwendungszweck: Spende von ... für virtuellen Spendenlauf
-							<br><br>
-							<div id="main_header">
-								Die erlaufene Summe wird zu 100% gespendet!
-							</div>
-		
-							<div id="charity_details_hint">
-								Für einen Betrag von weniger als 200€ gilt der Überweisungsträger als Spendennachweis.<br> 
-								Wird bei einem größeren Spendenbetrag eine Spendenquittung benötigt, 
-								dann wenden Sie sich bitte an 
-								<a href="mailto:badminton@postsportverein-landshut.de" style="color: red;">badminton@postsportverein-landshut.de</a>
-							</div>
-						</div>
+				<a href="./kinderlauf/data_input.php">
+					<div id="center_button">
+						Lauf eintragen
 					</div>
-					<video id="video_src" controls="controls" autoplay="autoplay">
-						<source src="https://www.postsportverein-landshut.de/images/abteilungen/Badminton/spendenlauf.mp4" type="video/mp4">
-					</video>
-					
-					<p><b>Erfolgsformat &#8222;Kinder laufen für Kinder" </b><br>
-						Seit mittlerweile 16 Jahren laufen die Landshuter Kinder fleißig ihre Kilometer, 
-						um für soziale Einrichtungen der Region Spenden zu sammeln. 
-						Über die Jahre hinweg sind in Summe über 120.000 Kilometer und 275.000 Euro erlaufen worden. 
-						Auch letztes Jahr konnte Corona uns keinen Strich durch die Rechnung machen, 
-						denn die Veranstaltung fand kurzerhand einfach online statt. 
-						Auch 2021 läuft jeder wieder für sich zuhause auf der Lieblingsstrecke und trägt die Kilometer 
-						selbst online hier auf der Website ein. <a href="#how_it_works">Weiteres hier</a>.<br><br>
-						<b>Sei ein Teil davon!</b>
-					</p>
-					
+				</a>
+				<div id="center_button_alt">
+					Oder spenden Sie so!
 				</div>
-				
+				<div id="charity_details">
+					Schulstiftung Seligenthal; Sonderkonto „Kinder laufen für Kinder“<br>
+					Sparkasse Landshut;	BIC: BYLADEM1LAH<br>
+					IBAN: DE09743500000004664205<br>
+					Verwendungszweck: Spende von ... für virtuellen Spendenlauf
+
+					<div id="charity_details_hint">
+						Für einen Betrag von weniger als 200€ gilt der Überweisungsträger als Spendennachweis.<br> 
+						Wird bei einem größeren Spendenbetrag eine Spendenquittung benötigt, 
+						dann wenden Sie sich bitte an 
+						<a href="mailto:badminton@postsportverein-landshut.de" style="color: red;">badminton@postsportverein-landshut.de</a>
+					</div>
+				</div>
 			</div>
 			<div id="charity_ad">
 				<span id="charity_ad_header">
@@ -628,7 +638,7 @@
 				</div>
 			</div>
 			
-			<a href="javascript:void(0);">
+			<a href="./kinderlauf/data_request.php">
 				<div id="button_filter">
 					Weitere Filteroptionen / Auswertungen
 				</div>
@@ -691,12 +701,12 @@
 			<p>
 				<b>Ihr wollt wissen, welches der stärkste Verein, die fleißigste Klasse oder die ambitionierte Firma ist?</b><br><br>
 				Kein Problem:<br>
-				1. Tragt im <a href="javascript:void(0);">Formularfeld</a> "Organisation/Schule" einfach ein, zu welcher Firma oder Schule ihr gehört</li><br>
-				2. Tragt im <a href="javascript:void(0);">Formularfeld</a> "Abteilung/Klasse" einfach ein, zu welcher Ateilung oder Klasse ihr gehört</li>
+				1. Tragt im <a href="./kinderlauf/data_input.php">Formularfeld</a> "Organisation/Schule" einfach ein, zu welcher Firma oder Schule ihr gehört</li><br>
+				2. Tragt im <a href="./kinderlauf/data_input.php">Formularfeld</a> "Abteilung/Klasse" einfach ein, zu welcher Ateilung oder Klasse ihr gehört</li>
 				<br><br>
 				Beispiel:<br> <i>Postsportverein</i> und <i>Nachwuchs</i> oder
 				<i>Gymnasium Seligenthal</i> und <i>10b</i><br><br>
-				Eure Ergebnisse abrufen bzw vergleichen könnt ihr <a href="javascript:void(0);">HIER</a>. 
+				Eure Ergebnisse abrufen bzw vergleichen könnt ihr <a href="./kinderlauf/data_request.php">HIER</a>. 
 			</p>
 		</section>
 
@@ -714,7 +724,7 @@
 					<a href="https://www.stmgp.bayern.de/coronavirus/">unter Rücksichtnahme der aktuellen Vorschriften</a>, egal ob entlang der Isar, im Wald oder auf dem Balkon. 
 					Es kommt dabei nicht auf die Geschwindigkeit an, sondern  auf die zurückgelegte Strecke.<br><br>
 					<b><span style="color: #ff1900;">3. DATEN EINTRAGEN</span></b><br>
-					Bis zum 17. Mai werden auf dieser Website die zurückgelegten Kilometer <a href="javascript:void(0);">eingetragen</a>.<br> 
+					Bis zum 17. Mai werden auf dieser Website die zurückgelegten Kilometer <a href="./kinderlauf/data_input.php">eingetragen</a>.<br> 
 					So sehen wir, wie fit Landshut ist und vor allem wie viel Geld deine Sponsoren den Sozialprojekten dank deiner Leistung schuldig sind.<br><br>
 					<b><span style="color: #ff1900;">4. SPENDEN ÜBERWEISEN</span></b><br>
 					Die Sponsoren überweisen im Laufe der folgenden Woche (17.-21. Mai) die ersportelte Summe auf das Konto des Spendenlaufes.<br>
