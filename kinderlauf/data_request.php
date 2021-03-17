@@ -127,6 +127,12 @@
         $dbname =       "kinderlauf";
 
         $isTableActive = true;
+
+        $conn = new mysqli($servername,$username,$password,$dbname);
+
+        if($conn->connect_error){
+            die("Conection failed: ".$conn->connect_error);
+        }
     ?>
 
 
@@ -139,6 +145,52 @@
     </head>
 
     <body>
+        <script>
+            let dbArray = new Array(
+                <?php
+                    $stmt = "SELECT organisation, department
+                            From db_kinderlauf
+                            GROUP BY organisation, department DESC";
+                    $departmentList = $conn->query($stmt);
+                    while($rowDep = $departmentList->fetch_assoc()){
+                        $orga = "\"".$rowDep["organisation"]."\"";
+                        $dep = "\"".$rowDep["department"]."\"";
+                        if($rowDep["organisation"] == NULL){
+                            $orga = "\"NULL\"";
+                        }
+                        if($rowDep["department"] == NULL){
+                            $dep = "\"NULL\"";
+                        }
+                        echo "{organisation: ".$orga.", department: ".$dep."}, ";    
+                    }
+                ?>
+            );
+            
+            function changeDdTeams(pickedOption){
+                    let selectView = document.getElementById('dd_teams');
+
+                    for (let i = selectView.options.length ; i>=2; i--) {
+                        selectView.remove(i);
+                    }
+
+                    for(let i=0;i<dbArray.length;i++){
+                        if(pickedOption == "NULL"){
+                            break; 
+                        }
+                        if(pickedOption == "all" || dbArray[i].organisation == pickedOption){
+                            let opt = document.createElement('option');
+                            opt.value = dbArray[i].department;
+                            opt.innerHTML = dbArray[i].department;
+                            if(opt.innerHTML == "NULL"){
+                                opt.value = "NULL";
+                                opt.innerHTML = "Keine";
+                            }
+                            selectView.appendChild(opt);
+                        }
+                    }
+                }
+        </script>
+
         <div id="top">
             <div class="logo_psv">
                 <a href="https://www.postsportverein-landshut.de/spendenlauf">
@@ -154,19 +206,13 @@
         </div>
         <div id="main">
             <?php
-                $conn = new mysqli($servername,$username,$password,$dbname);
-
-                if($conn->connect_error){
-                    die("Conection failed: ".$conn->connect_error);
-                }
-
                 $stmt = "SELECT organisation FROM db_kinderlauf GROUP BY organisation DESC";
                 $organisationList = $conn->query($stmt);
             ?>
 
             <h2>Detailierte Datenabfrage</h2>
             <form action="../kinderlauf/data_request.php" method="GET">
-                <select id="dd_organisations" name="dd_organisations">
+                <select id="dd_organisations" name="dd_organisations" onchange = "changeDdTeams(this.value);">
                     <option value="main">Schule/Organisation</option>
                     <option value="all">Alle</option>
                     <?php
@@ -183,10 +229,50 @@
                 <select id="dd_teams" name="dd_teams">
                     <option value="main">Klasse/Abteilung</option>
                     <option value="all">Alle</option>
+                    <?php
+                        if(!empty($_GET["dd_organisations"])){
+                            if($_GET["dd_organisations"] == "all"){
+                                $stmt = $conn->prepare('SELECT department
+                                FROM db_kinderlauf
+                                GROUP BY department'
+                                );
+                            }else{
+                                $stmt = $conn->prepare('SELECT department
+                                FROM db_kinderlauf
+                                WHERE organisation = ?
+                                GROUP BY department'
+                                );
+                                $stmt->bind_param('s', $_GET["dd_organisations"]);
+                            }
+                            
+                            $stmt->execute();
+                            $departmentListAlt = $stmt->get_result();
+                            while($rowDepAlt = $departmentListAlt->fetch_assoc()){
+                                if($rowDepAlt["department"] == NULL){
+                                    echo "<option value=\"NULL\">Keine</option>";
+                                }else{
+                                    echo "<option value=\"".$rowDepAlt["department"]."\">".$rowDepAlt["department"]."</option>";
+                                }
+                            }
+                        }
+                    ?>
+
                 </select><br>
 
                 <input type="submit" id="submit" value="Suchen">
             </form>
+            <script>
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                if(urlParams.get('dd_organisations') != null ||urlParams.get('dd_organisations')!= undefined){
+                    document.getElementById("dd_organisations").value = urlParams.get('dd_organisations');
+                }
+                if(urlParams.get('dd_teams') != null ||urlParams.get('dd_teams') != undefined){
+                    document.getElementById("dd_teams").value = urlParams.get('dd_teams');
+                }
+                
+            </script>
+
             <div id="results" <?php if(empty($_GET["dd_organisations"])||(empty($_GET["dd_teams"]))
                                 ||($_GET["dd_organisations"]=="main")||($_GET["dd_teams"]=="main")){$isTableActive = false; echo "style=\"display: none;\"";}
                                 ?>>
@@ -207,27 +293,64 @@
                                                         GROUP BY organisation, department  
                                                         ORDER BY organisation  DESC'
                                                         );
-                            }elseif($_GET["dd_organisations"] =="all"){
-                                $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
+                            }elseif($_GET["dd_organisations"] == "all"){
+                                if($_GET["dd_teams"] != "NULL"){
+                                    $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
                                                         FROM db_kinderlauf
                                                         WHERE department = ?
                                                         GROUP BY organisation'
                                                         );
-                                $stmt->bind_param('s', $_GET["dd_teams"]);
-                            }elseif($_GET["dd_teams"] =="all"){
-                                $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
+                                    $stmt->bind_param('s', $_GET["dd_teams"]);
+                                }else{
+                                    $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
+                                                        FROM db_kinderlauf
+                                                        WHERE department IS NULL
+                                                        GROUP BY organisation'
+                                                        );
+                                }
+                            }elseif($_GET["dd_teams"] == "all"){
+                                if($_GET["dd_organisations"] != "NULL"){
+                                    $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
                                                         FROM db_kinderlauf
                                                         WHERE organisation = ?
                                                         GROUP BY department
                                                         ORDER BY department ASC'
                                                         );
-                                $stmt->bind_param('s', $_GET["dd_organistion"]);
+                                    $stmt->bind_param('s', $_GET["dd_organisations"]);
+                                }else{
+                                    $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
+                                                        FROM db_kinderlauf
+                                                        WHERE organisation IS NULL
+                                                        GROUP BY department
+                                                        ORDER BY department ASC'
+                                                        );
+                                }
                             }else{
-                                $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
+                                if($_GET["dd_organisations"] != "NULL" && $_GET["dd_teams"] != "NULL"){
+                                    $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
                                                         FROM db_kinderlauf
                                                         WHERE department = ? AND organisation = ?'
                                                         );
-                                $stmt->bind_param('ss', $_GET["dd_organisation"], $_GET["dd_teams"]);
+                                    	$stmt->bind_param('ss', $_GET["dd_teams"], $_GET["dd_organisations"]);
+                                }else if($_GET["dd_organisations"] == "NULL" && $_GET["dd_teams"] != "NULL"){
+                                    $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
+                                                        FROM db_kinderlauf
+                                                        WHERE department = ? AND organisation IS NULL'
+                                                        );
+                                    	$stmt->bind_param('s', $_GET["dd_teams"]);
+                                }else if($_GET["dd_organisations"] != "NULL" && $_GET["dd_teams"] == "NULL"){
+                                    $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
+                                                        FROM db_kinderlauf
+                                                        WHERE department IS NULL AND organisation = ?'
+                                                        );
+                                    	$stmt->bind_param('s', $_GET["dd_organisations"]);
+                                }else{
+                                    $stmt = $conn->prepare('SELECT organisation, department, SUM(distance) AS distance, IF(department != NULL, COUNT(department), COUNT(name)) AS participants
+                                                        FROM db_kinderlauf
+                                                        WHERE department IS NULL AND organisation IS NULL'
+                                                        );
+                                }
+                                
                             }
 
                             $stmt->execute();
