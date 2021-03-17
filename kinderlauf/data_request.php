@@ -258,7 +258,6 @@
                     ?>
 
                 </select><br>
-
                 <input type="submit" id="submit" value="Suchen">
             </form>
             <script>
