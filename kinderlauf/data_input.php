@@ -113,7 +113,10 @@
         width: auto;
     }
 
-
+    #necessary_fields{
+        margin-top:16px;
+        font-size: 1vh;
+    }
 
     #right_side{
         text-align: center;
@@ -170,11 +173,11 @@
             <div id="left_side">
                 <h2>Lauf eintragen</h2>
                 <form action="../kinderlauf/data_checkout.html" method="POST">
-                    <input type="text" placeholder="Name" id="lname" name="lname" class="inputs"><br>
-                    <input type="text" placeholder="Vorname" id="fname" name="fname" class="inputs"><br>
+                    <input type="text" placeholder="Name*" id="lname" name="lname" class="inputs"><br>
+                    <input type="text" placeholder="Vorname*" id="fname" name="fname" class="inputs"><br>
                     <input type="text" placeholder="Schule/Organisation" id="orga" name="orga" class="inputs"><br>
                     <input type="text" placeholder="Klasse/Abteilung" id="depart" name="depart" class="inputs"><br>
-                    <input type="number" placeholder="Kilometer" id="distance" name="distance" class="inputs"><br>
+                    <input type="number" placeholder="Kilometer*" id="distance" name="distance" class="inputs"><br>
                     <select id="discipline" name="discipline"class="inputs">
                         <option class="discipline_options" value="">Laufen</option>
                         <option class="discipline_options" value="">Fahrrad</option>
@@ -186,6 +189,9 @@
                     <input type="text" onfocus="this.value=''" value="Code" placeholder="Code" id="chapta_code" name="chapta_code" class="inputs">
                     <input id="submit" type="submit" value="Lauf abschließen">
                 </form>
+                <div id="necessary_fields">
+                    Mit * markierte Felder sind Pflichtfelder.
+                </div>
             </div>
             <div id="right_side">
                 <div id="charity_details">
