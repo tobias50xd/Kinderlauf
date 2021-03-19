@@ -417,6 +417,74 @@
 		margin-left: 40px;
 		margin-right: 8px;
 	}
+
+	#pseudo_p{
+		display:  flex;
+		justify-content: flex-start;
+		align-items: center;
+		border: 1px solid;
+		border-radius: 15px;
+		border-color: #ff1900 ;
+		padding: 16px;
+		margin-top: 16px;
+		padding-left: 32px;
+		margin-left: 40px;
+		margin-right: 8px;
+	}
+
+	#pseudo_p img{
+		max-height: 360px;
+		width: auto;
+		display: inline-block;
+	}
+
+	.overlay{
+		text-align: center;
+		display: none;
+		color: white;
+		font-size: 3vw;
+	}
+
+	.pseudo_p_image_cont{
+		position: relative;
+		margin-left: 8px;
+		margin-right: 8px;
+	}
+
+	#pseudo_p a:hover > .overlay{
+    	width:100%;
+    	height:100%;
+		top: 0;
+		left: 0;
+    	position:absolute;
+    	background-color:#000;
+    	opacity:0.5;
+		display: inline-block;
+	}
+
+	#pseudo_p p{
+		border: none;
+		padding: 0;
+		margin: 0;
+		max-width: 30%;
+		padding-bottom: 16px;
+	}
+
+	@media (max-width: 991px) {
+		#pseudo_p{
+			flex-direction: column;
+		}
+
+		#pseudo_p img{
+			max-width: 100%;
+			height: auto;
+		}
+
+		#pseudo_p p{
+			max-width: 100%;
+			margin-left: 8px;
+		}
+	}
 	
 	.destination_sponsors a{
 		color: #ff1900;
@@ -732,6 +800,34 @@
 				</p>
 			</section>
 		</a>
+
+		<section class="destination_sponsors">
+			<h2>Du willst uns noch weiter unterstützen?</h2>
+				<div id="pseudo_p">
+					<p>
+						Dann Teile diesen Flyer oder diese Plakat mit der Welt!<br>
+						Und helfe uns, so viele Leute wie möglich zur Teilnahme zu bewegen,<br><br>
+						<b><span style="color: #ff1900;">denn je mehr Leute laufen, desto mehr Spenden können wir für Landshut sammeln und somit unsere Stadt ein klein wenig besser machen!</span></b>
+					</p>
+					<a class = "pseudo_p_image_cont" href="src/Kinderlauf Plakat 21_V3.1-1.pdf" download>
+						<img id="image_plakat" src="src/plakat.png" alt="Flyer-Kinderlauf" onload="calculateDimansionOfImage();">
+						<div id="overlay_plakat" class="overlay">Download</div>
+					</a>
+					<a class = "pseudo_p_image_cont" href="src/Kinderlauf_Flyer21_V2-1.pdf" download>
+						<img id="image_flyer" src="src/flyer.png" alt="Plakat-Kinderlauf"onload="calculateDimansionOfImage();" > 
+						<div id="overlay_flyer" class="overlay">Download</div>
+					</a>
+				</div>
+		</section>
+
+		<script>
+			function calculateDimansionOfImage(){
+				var heightImg = document.getElementById('image_plakat').clientHeight;
+				document.getElementById('overlay_plakat').setAttribute("style", "line-height: "+ heightImg/2 + "px;");
+				heightImg = document.getElementById('image_flyer').clientHeight;
+				document.getElementById('overlay_flyer').setAttribute("style", "line-height: "+ heightImg/2 + "px;");
+			}
+		</script>
 
 		<section class="destination_sponsors">
 			<h2>So schauen wir auf den Datenschutz</h2>
