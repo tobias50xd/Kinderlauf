@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="../src/logo_postsv.ico">
+        <title>Kinderlauf - Datenerfassung</title>
+    </head>
 
 <style>
     html, body{
@@ -68,11 +74,12 @@
 
     .inputs{
         border: 1px solid;
-        border-color: black;
+        border-color: gray;
         margin: 2px;
         margin-left: 8px;
         margin-right: 8px;
         width: 25vh;
+        font-size:medium;
     }
 
     .inputs:focus{
@@ -115,7 +122,7 @@
 
     #necessary_fields{
         margin-top:16px;
-        font-size: 1vh;
+        font-size: 1.25vh;
     }
 
     #right_side{
@@ -147,13 +154,6 @@
 
 
 </style>
-
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="../src/logo_postsv.ico">
-        <title>Kinderlauf - Datenerfassung</title>
-    </head>
 
     <body>
         <div id="top">
@@ -187,7 +187,7 @@
                     <img id="chapta_start" class="inputs" src="captcha_code_file.php?rand=<?php echo rand(); ?>" id="captchaimg" ><br>
                     <label style ="border: none;" class="inputs" for="message">Geben sie den obigen Code bitte ein:</label><br>
                     <input type="text" onfocus="this.value=''" value="Code" placeholder="Code" id="chapta_code" name="chapta_code" class="inputs">
-                    <input id="submit" type="submit" value="Lauf abschließen">
+                    <input id="submit" type="button" value="Lauf abschließen">
                 </form>
                 <div id="necessary_fields">
                     Mit * markierte Felder sind Pflichtfelder.
