@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="../src/logo_postsv.ico">
+        <title>Kinderlauf - Datenabfrage</title>
+    </head>
+
+<style>
+    
+    html, body{
+        width: 100%;
+        margin: 0px;
+        text-align: center;
+    }
+
+    #top{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .logo_psv{
+        max-width: 5%;
+        height: auto;
+        margin: 16px;
+    }
+
+    .logo_psv  img{
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+	#logo_klfk{
+		margin-top: 16px;
+		display: inline-block;
+		max-width: 70%;
+		min-width: 0;
+		height: auto;	
+		object-fit: contain;
+	}
+
+    #main{
+        margin: 2vw;
+        margin-top: 6vh;
+        padding: 4vw;
+        border: 1px solid;
+        border-color: #ff1900;
+        border-radius: 25px;
+        text-align: center;
+        display: inline-block;
+    }
+
+    #main h2{
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-top: 0px;
+        padding: 0;
+        color: #ff1900;
+        margin-bottom: 24px;
+        font-size: 3.5vh
+    }
+
+    #main select{
+        font-size: 2vh;
+        display: inline-block;
+        margin-left: 16px;
+        margin-right: 16px;
+        width: 25vh;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        border: 1px solid;
+        border-color: #ff1900;
+        
+    }
+
+    #main input{
+        background-color: #ff1900;
+        border: 0px;
+        width: 25vh;
+        margin-top: 12px;
+        padding: 4px;
+        border-radius: 8px;
+        color: white;
+        font-size: 2vh;
+    }
+
+    #results{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: auto;
+    }
+    
+    #results table{
+        font-size: 3vmin;
+        margin-top: 32px;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0px;
+        border: 2px solid;
+        border-color: #ff1900;
+        border-collapse:collapse;
+        overflow-x: auto;
+    }
+
+    #results th{
+        border: 2px solid;
+        border-color: #ff1900;
+        margin: 0px;
+        padding: 1vmin;
+    }
+
+    #results td{
+        text-align: right;
+        border: 2px solid;
+        border-color: #ff1900;
+        margin: 0px;
+        padding: 0.5vmin;
+    }
+
+    #loading_bar{
+        display: none;
+        margin-top: 32px;
+        margin-left:8px;
+        margin-right: 8px;
+        border: 8px solid white;
+        border-radius: 50%;
+        border-top: 8px solid #ff1900;
+        border-bottom: 8px solid #ff1900;
+        width: 2vw;
+        height: 2vw;
+        -webkit-animation: spin 1s linear infinite;
+        animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin{
+        0% { -webkit-transform: rotate(0deg);}
+        100% {-webkit-transform: rotate(360deg);}
+    }
+
+    @keyframes spin {
+        0% {transform: rotate(0deg);}
+        100% {transform: rotate(360deg);}
+    }
+
+</style>
+
+    <body>
+        <div id="top">
+            <div class="logo_psv">
+                <a href="https://www.postsportverein-landshut.de/spendenlauf">
+                    <img src="https://www.postsportverein-landshut.de/images/site/PostSVLogo_gross.png" alt="Post SV Landshut">
+                </a>
+            </div>
+            <img id="logo_klfk" src="../src/klfk.jpg" alt="Kinder laufen für Kinder">
+            <div class="logo_psv" style="visibility: hidden;">
+                <a href="https://www.postsportverein-landshut.de/spendenlauf">
+                    <img src="https://www.postsportverein-landshut.de/images/site/PostSVLogo_gross.png" alt="Post SV Landshut">
+                </a>
+            </div>
+        </div>
+        <div id="main">
+
+            <h2>Detailierte Datenabfrage</h2>
+            <form>
+                <select id="dd_organisations" name="dd_organisations" onchange = "changeDdTeams(this.value);">
+                    <option value="main">Schule/Organisation</option>
+                    <option value="all">Alle</option>
+
+                </select><br>
+                <select id="dd_teams" name="dd_teams">
+                    <option value="main">Klasse/Abteilung</option>
+                    <option value="all">Alle</option>
+
+                </select><br>
+                <input type="button" id="submit" value="Suchen" onclick = "loadTable();">
+            </form>
+            <div id="loading_bar"></div>
+            <div id="results"></div>
+            
+            <script>
+                let tableHtmlHeader = "<table> <tr> <th>Schule/Organisation</th><th>Klasse/Abteilung</th><th>Teilnehmer</th><th>Kilometer</th></tr>";
+
+                function ajaxRequest(param1, param2){
+                    return new Promise(function (resolve, reject) {
+                        const xmlHttpRequest = new XMLHttpRequest();
+
+                        xmlHttpRequest.onreadystatechange = function () {
+                            if(xmlHttpRequest.readyState === 4){
+                                if(xmlHttpRequest.status == 200){
+                                    resolve(xmlHttpRequest.responseText);
+                                }else{
+                                    reject();
+                                }
+                            }
+                        }
+
+                        let uri = "";
+
+                        if(param1 == "Sonstige"){
+                            param1 = "NULL";
+                        }
+
+                        if(param2 == "Keine"){
+                            param2 = "NULL";
+                        }
+
+                        if(param1 != undefined && param2 != undefined){
+                            uri = "data_exchange.php/?organisations="+param1+"&teams="+param2;
+                        }else if(param1 != undefined){
+                            uri = "data_exchange.php/?organisations="+param1;
+                        }else{
+                            uri = "data_exchange.php";
+                        }
+
+                        xmlHttpRequest.open('GET', uri);
+                        xmlHttpRequest.send();
+                    });
+                }
+
+                function loadTable(){
+                    ddOrgas = document.getElementById("dd_organisations").value;
+                    ddTeams = document.getElementById("dd_teams").value;
+                    if(ddOrgas != "main" && ddTeams != "main"){
+                        document.getElementById("loading_bar").style.display = "inline-block";
+                        
+
+                        ajaxRequest(ddOrgas, ddTeams).then(
+                            response => {document.getElementById("loading_bar").style.display = "none"; 
+                                         document.getElementById("results").innerHTML = tableHtmlHeader + response + "</table>"
+                                        },
+                            reject => {document.getElementById("loading_bar").style.display = "none"; 
+                                       document.getElementById("results").innerHTML = tableHtmlHeader + "<tr> <td>---</td> <td>---</td> <td>---</td> <td>---</td> </tr>  </table>"
+                                      }
+                        );
+                    }
+                }
+
+                function changeDdTeams(ddEntry){
+                    ajaxRequest(ddEntry).then(
+                        function(response){
+                            let optionList = JSON.parse(response);
+                            for (let i =  document.getElementById("dd_teams").options.length ; i>=2; i--) {
+                                document.getElementById("dd_teams").remove(i);
+                            }
+                            for(var i = 0; i<optionList.team.length; i++){
+                                if(optionList.team[i] != "Keine"){
+                                    let opt = document.createElement('option');
+                                    opt.value = optionList.team[i];
+                                    opt.innerHTML = optionList.team[i];
+                                    document.getElementById("dd_teams").appendChild(opt);
+                                }
+                            }
+                        }
+                    );
+                }
+
+                function changeDdOrgas(){
+                    ajaxRequest().then(
+                        function(response){
+                            let optionList = JSON.parse(response);
+                            for(var i = 0; i<optionList.organisation.length; i++){
+                                let opt = document.createElement('option');
+                                opt.value = optionList.organisation[i];
+                                opt.innerHTML = optionList.organisation[i];
+                                document.getElementById("dd_organisations").appendChild(opt);
+                            }
+                        }
+                    )
+                }
+
+                changeDdOrgas();
+
+                /*
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                if(urlParams.get('dd_organisations') != null ||urlParams.get('dd_organisations') != undefined){
+                    document.getElementById("dd_organisations").value = urlParams.get('dd_organisations');
+                }
+                if(urlParams.get('dd_teams') != null ||urlParams.get('dd_teams') != undefined){
+                    document.getElementById("dd_teams").value = urlParams.get('dd_teams');
+                }
+                */
+                
+            </script>
+
+        </div>
+    </body>
+</html>
