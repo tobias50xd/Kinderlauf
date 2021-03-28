@@ -404,6 +404,7 @@
 		padding-left: 32px;
 		margin-left: 40px;
 		margin-right: 8px;
+		margin-bottom: 16px;
 	}
 
 	#pseudo_p img{
@@ -457,6 +458,32 @@
 		#pseudo_p p{
 			max-width: 100%;
 			margin-left: 8px;
+		}
+	}
+
+	.section_div{
+		display: block;
+		border: 1px solid;
+		border-radius: 15px;
+		border-color: #ff1900 ;
+		padding: 16px;
+		margin-top: 16px;
+		padding-left: 32px;
+		margin-left: 40px;
+		margin-right: 8px;
+		margin-bottom: 16px;
+	}
+
+	.section_video{
+		width: 50%;
+		height: auto;
+		border: none;
+		border-radius: 8px;
+	}
+
+	@media (max-width: 991px) {
+		.section_video{
+			width: 100%;
 		}
 	}
 	
@@ -790,6 +817,15 @@
 				</p>
 			</section>
 		</a>
+
+		<section class="destination_sponsors">
+			<h2>Pia erklärts euch nochmal</h2>
+			<div class="section_div">
+				<video class="section_video" controls="controls">
+					<source src="https://www.postsportverein-landshut.de/images/abteilungen/Badminton/spendenlauf.mp4" type="video/mp4">
+				</video>
+			</div>
+		</section>
 
 		<section class="destination_sponsors">
 			<h2>Du willst uns noch weiter unterstützen?</h2>
