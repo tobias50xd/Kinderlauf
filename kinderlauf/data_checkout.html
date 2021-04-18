@@ -85,7 +85,7 @@
         <title>Kinderlauf - Datenerfassung</title>
     </head>
 
-    <body>
+    <body onload="setName();">
         <div id="top">
             <div class="logo_psv">
                 <a href="https://www.postsportverein-landshut.de/spendenlauf">
@@ -112,4 +112,11 @@
 				Verwendungszweck: Spende von ... für virtuellen Spendenlauf<br>
         </div>
     </body>
+
+    <script>
+        function setName(){
+            const urlParams = new URLSearchParams(window.location.search);
+            document.getElementsByTagName("h1").item(0).innerHTML = document.getElementsByTagName("h1").item(0).innerHTML + " " + urlParams.get("fname") +"!"; 
+        }
+    </script>
 </html>

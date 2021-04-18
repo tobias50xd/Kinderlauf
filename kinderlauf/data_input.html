@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="../src/logo_postsv.ico">
+        <title>Kinderlauf - Datenerfassung</title>
+    </head>
 
 <style>
     html, body{
@@ -68,16 +74,18 @@
 
     .inputs{
         border: 1px solid;
-        border-color: black;
+        border-color: gray;
         margin: 2px;
         margin-left: 8px;
         margin-right: 8px;
         width: 25vh;
+        font-size:medium;
     }
 
     .inputs:focus{
         border-color: #ff8800;
     }
+
 
     input, select{
         width:100%;
@@ -96,7 +104,7 @@
         font-size: large;
     }
 
-    #submit{
+    #submit_btn{
         position: absolute;
         bottom: 8px;
         right: 3vw;
@@ -115,7 +123,14 @@
 
     #necessary_fields{
         margin-top:16px;
-        font-size: 1vh;
+        font-size: 1.25vh;
+    }
+
+    #php_error_output{
+        display: none;
+        margin-top: 16px;
+        color:#ff1900;
+        font-size: 2.5vh;
     }
 
     #right_side{
@@ -148,14 +163,7 @@
 
 </style>
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="../src/logo_postsv.ico">
-        <title>Kinderlauf - Datenerfassung</title>
-    </head>
-
-    <body>
+    <body onload="isInvalid();">
         <div id="top">
             <div class="logo_psv">
                 <a href="https://www.postsportverein-landshut.de/spendenlauf">
@@ -172,26 +180,58 @@
         <div id="main">
             <div id="left_side">
                 <h2>Lauf eintragen</h2>
-                <form action="../kinderlauf/data_checkout.html" method="POST">
-                    <input type="text" placeholder="Name*" id="lname" name="lname" class="inputs"><br>
-                    <input type="text" placeholder="Vorname*" id="fname" name="fname" class="inputs"><br>
-                    <input type="text" placeholder="Schule/Organisation" id="orga" name="orga" class="inputs"><br>
-                    <input type="text" placeholder="Klasse/Abteilung" id="depart" name="depart" class="inputs"><br>
-                    <input type="number" placeholder="Kilometer*" id="distance" name="distance" class="inputs"><br>
-                    <select id="discipline" name="discipline"class="inputs">
-                        <option class="discipline_options" value="">Laufen</option>
-                        <option class="discipline_options" value="">Fahrrad</option>
-                        <option class="discipline_options" value="">Rollerblades</option>
-                        <option class="discipline_options" value="">Sonstiges</option>
+                <form id="formular" action="../kinderlauf/data_exchange_in.php" method="post">
+                    <input type="text" placeholder="Name*" id="lname" name="lname" class="inputs" required pattern="^[^\s].+$"><br>
+                    <input type="text" placeholder="Vorname*" id="fname" name="fname" class="inputs" pattern="^[^\s].+$" required ><br>
+                    <input type="text" placeholder="Schule/Organisation" id="orga" name="orga" class="inputs" pattern="^[^\s].+$" ><br>
+                    <input type="text" placeholder="Klasse/Abteilung" id="depart" name="depart" class="inputs" pattern="^[^\s].+$"><br>
+                    <input type="number" step="0.01" min="0.01" max="1000000" placeholder="Kilometer*" id="distance" name="distance" class="inputs" pattern="^[0-9]+.?[0-9]{1,2}$" required><br>
+                    <select id="discipline" name="discipline"class="inputs" required>
+                        <option class="discipline_options" value="">Disziplin*</option>
+                        <option class="discipline_options" value="Laufen">Laufen</option>
+                        <option class="discipline_options" value="Fahrrad">Fahrrad</option>
+                        <option class="discipline_options" value="Rollerblades">Rollerblades</option>
+                        <option class="discipline_options" value="Walken">Walken</option>
+                        <option class="discipline_options" value="Sonstiges">Sonstiges</option>
                     </select><br>
                     <img id="chapta_start" class="inputs" src="captcha_code_file.php?rand=<?php echo rand(); ?>" id="captchaimg" ><br>
                     <label style ="border: none;" class="inputs" for="message">Geben sie den obigen Code bitte ein:</label><br>
                     <input type="text" onfocus="this.value=''" value="Code" placeholder="Code" id="chapta_code" name="chapta_code" class="inputs">
-                    <input id="submit" type="submit" value="Lauf abschließen">
+                    <input id="submit_btn" type="button" value="Lauf abschließen" onclick="submitForm();">
                 </form>
+
+                <script>
+                    function submitForm(){
+                        document.getElementById("formular").submit();
+                        document.getElementById("formular").reset();
+                    }
+
+                    function isInvalid(){
+                        const urlParams = new URLSearchParams(window.location.search);
+                        if(urlParams.get("error_code") == 1){
+                            document.getElementById("php_error_output").style.display = "inline-block";
+                            document.getElementById("lname").value = urlParams.get("lname");
+                            document.getElementById("fname").value = urlParams.get("fname");
+                            if(urlParams.get("orga") != ""){
+                                document.getElementById("orga").value = urlParams.get("orga");
+                            }
+                            if(urlParams.get("depart") != ""){
+                                document.getElementById("depart").value = urlParams.get("depart");
+                            }
+                            document.getElementById("distance").value = urlParams.get("distance");
+                            document.getElementById("discipline").value = urlParams.get("discipline");
+                        }
+                    }
+                </script>
+
+                <div id="php_error_output">
+                    <b>Eingabe ungültig bitte erneut versuchen!</b>
+                </div>
+
                 <div id="necessary_fields">
                     Mit * markierte Felder sind Pflichtfelder.
                 </div>
+                
             </div>
             <div id="right_side">
                 <div id="charity_details">
