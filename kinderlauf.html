@@ -692,7 +692,7 @@
 				<hr id="skyline_bottom">
 			</div>
 		</div>
-		<div id="run_details">
+		<div id="run_details" onload="updateRunDetails();">
 			<div id="run_details_colums">
 				<div class="total_details">
 					<div>
@@ -700,7 +700,7 @@
 					</div>
 					<div class="tacho_div">
 						<img src="src/tacho.png" alt="Total Distance">
-						<img class="tacho_neadle" src="./src/tacho_nadel.png">
+						<img id="tacho_neadle_distance" class="tacho_neadle" src="./src/tacho_nadel.png">
 					</div>
 					<div id="distance_data" class="details_data">
 						0km
@@ -712,7 +712,7 @@
 					</div>
 					<div class="tacho_div">
 						<img src="src/tacho.png" alt="Total Participants">
-						<img class="tacho_neadle" src="./src/tacho_nadel.png">
+						<img id="tacho_neadle_participants" class="tacho_neadle" src="./src/tacho_nadel.png">
 					</div>
 					<div id="participants_data" class="details_data">
 						0
@@ -925,6 +925,9 @@
 					<a href="https://mareis.com/" target="_blank" rel="noopener noreferrer"><img src="src/sponsors_part/mareis.png" alt="Mareis"></a>
 				</li>
 				<li class="sponsors">
+					<a href="https://www.kwoka.com/de/index.php" target="_blank" rel="noopener noreferrer"><img src="src/sponsors_part/kwoka-logo.png" alt="Kwoka"></a>
+				</li>
+				<li class="sponsors">
 					<a href="https://www.idowa.de/" target="_blank" rel="noopener noreferrer"><img src="src/sponsors_part/idowa.png" alt="Landshuter Zeitung"></a>
 				</li>
 			</ul>
@@ -936,5 +939,53 @@
 		</section>
 		
 	</body>
+
+	<script>
+		function ajaxRequest(){
+			return new Promise(function (resolve, reject){
+				const xmlHttpRequest = new XMLHttpRequest();
+
+				xmlHttpRequest.onreadystatechange = function(){
+					if(xmlHttpRequest.readyState === 4){
+						if(xmlHttpRequest.status == 200){
+							resolve(xmlHttpRequest.responseText);
+						}
+					}
+				}
+
+				xmlHttpRequest.open('GET', "data_exchange_in.php/?kinderlauf=true");
+				xmlHttpRequest.send();
+			});
+		}
+
+		function updateRunDetails(){
+			ajaxRequest().then(
+				function(response){
+					let responsObj = JSON.parse(response);
+					document.getElementById("distance_data").innerHTML = responsObj.total_distance + " km";
+					document.getElementById("distance_data").innerHTML = responsObj.total_participants ;
+
+					function convertToFullCircle (angle){
+						//cut at 180 degree
+						if(angle > 180){
+							angle = 180;
+						}
+
+						//convert to full circle angle
+						if(angle <= 90){
+							angle = 90 - angle;
+						}else{
+							angle = angle - 90;
+						}
+
+						return angle;
+					}
+
+					document.getElementById("tacho_neadle_distance").style.rotate(convertToFullCircle(0.05454 * responsObj.total_distance));
+					document.getElementById("tacho_neadle_participants").style.rotate(convertToFullCircle(responsObj.total_distance));
+				}
+			);
+		}
+	</script>
 
 </html>
