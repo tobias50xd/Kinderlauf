@@ -12,7 +12,7 @@
         die("Conection failed: ".$conn->connect_error);
     }
 
-    if(isset($_GET["kinderlauf"]) && $_GET["kinderlauf"] == true) {
+    if(isset($_GET["kinderlauf"]) && $_GET["kinderlauf"] == 1) {
         $result = "{\"total_money\": \"" . TOTAL_MONEY . "\", ";
         $stmt = "SELECT SUM(distance) AS \"total_distance\" FROM db_kinderlauf";
         $total_distance_list = $conn->query($stmt);
