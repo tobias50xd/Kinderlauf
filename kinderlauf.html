@@ -692,7 +692,7 @@
 				<hr id="skyline_bottom">
 			</div>
 		</div>
-		<div id="run_details">
+		<div id="run_details" onload="updateRunDetails();">
 			<div id="run_details_colums">
 				<div class="total_details">
 					<div>
@@ -954,6 +954,7 @@
 				}
 
 				xmlHttpRequest.open('GET', "./kinderlauf/data_exchange_in.php?kinderlauf=1");
+
 				xmlHttpRequest.send();
 			});
 		}
@@ -965,6 +966,7 @@
 					document.getElementById("distance_data").innerHTML = responsObj.total_distance + " km";
 					document.getElementById("participants_data").innerHTML = responsObj.total_participants ;
 
+
 					function convertToFullCircle (angle){
 						//cut at 180 degree
 						if(angle > 180){
@@ -974,11 +976,13 @@
 						//convert to full circle angle
 						angle = angle - 90;
 
+
 						return angle;
 					}
 
 					document.getElementById("tacho_neadle_distance").style.transform = "rotate("+ convertToFullCircle(0.05454 * responsObj.total_distance) +"deg)";
 					document.getElementById("tacho_neadle_participants").style.transform = "rotate("+ convertToFullCircle(responsObj.total_participants) +"deg)";
+
 				}
 			);
 		}
